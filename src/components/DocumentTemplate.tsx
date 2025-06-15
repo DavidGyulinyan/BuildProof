@@ -2,42 +2,54 @@
 
 import {useState} from "react";
 
-const DocumentTamplate = () => {
+const DocumentTemplate = () => {
 
-    const [performativeNumber, setPerformativeNumber] = useState(0);
-    const [page, setPage] = useState(0);
-    const [day, setDay] = useState("15");
-    const [month, setMonth] = useState("06");
-    const [year, setYear] = useState("2025");
+    const [documentInfo, setDocumentInfo] = useState({
+        page: 0,
+        performativeNumber: 0
+    });
 
-    const [objectName, setObjectName] = useState("Բնակելի միկրոշրջան");
-    const [objectAddress, setObjectAddress] = useState("ք․ Երևան, Աջափնյակ, Տիչինա 320");
+    const [date, setDate] = useState({
+        day: "15",
+        month: "06",
+        year: "2025"
+    });
 
-    const [buildingNumber, setBuildingNumber] = useState("55");
-    const [buildingType, setBuildingType] = useState("2-Հ")
+    const [constructionInfo, setConstructionInfo] = useState({
+        objectName: "Բնակելի միկրոշրջան",
+        objectAddress: "ք․ Երևան, Աջափնյակ, Տիչինա 320",
+        buildingNumber: "55",
+        buildingType: "2-Հ",
+        heightSign: "-7.70",
+    });
 
-    const [heightSign, setHeightSign] = useState("-7.70");
+    const [companies, setCompanies] = useState({
+        technicalControlCompany: {
+            name: 'Հալդի Քոնսալթ',
+            type: 'ՍՊԸ',
+            technicalControlEngineer: 'Ռ․ Եղիազարյան',
+        },
+        generalContractor: {
+            name: 'Շին Վեկտոր',
+            type: 'ՍՊԸ',
+            generalEngineer: "Գ․ Դալլաքյան",
+            responsiblePersonPosition:"Գլխավոր ինժեներ"
+        },
+        subContractor: {
+            name: "-",
+            type: "-",
+            subContractorResponsiblePerson:"-",
+            subContractorResponsiblePersonPosition:"-"
+        },
+        copyrightControl: {
+            name:"Ֆուլ-արտ",
+            type:'ՍՊԸ',
+            copyrightControlResponsiblePerson: 'Տ․ Խաչիյան',
+            responsiblePersonPosition:'կոնստրուկտոր'
+        }
+    });
+
     const [natureOfWork, setNatureOfWork] = useState("ավտոկայանատեղիի հիմնային սալի և սյուների ամրանավորում և կաղապարում");
-
-    const [responsiblePerson, setResponsiblePerson] = useState("Գ․ Դալլաքյան");
-    const [responsiblePersonPosition, setResponsiblePersonPosition] = useState("Գլխավոր ինժեներ");
-
-    const [technicalControlCompany, setTechnicalControlCompany] = useState('Հալդի Քոնսալթ');
-    const [technicalControlCompanyType, setTechnicalControlCompanyType] = useState('ՍՊԸ');
-    const [technicalControlEngineer, setTechnicalControlEgineer] = useState('Ռ․ Եղիազարյան');
-
-    const [generalContractor, setGeneralContractor] = useState('Շին Վեկտոր');
-    const [generalContractorCompanyType, setGeneralContractorCompanyType] = useState('ՍՊԸ');
-
-    const [subContractor, setSubcontractor] = useState('-');
-    const [subContractorCompanyType, setSubGeneralContractorCompanyType] = useState('-')
-    const [subContractorResponsiblePerson, setSubcontractorResponsiblePerson] = useState('-');
-    const [subContractorResponsiblePersonPosition, setSubcontractorResponsiblePersonPosition] = useState('-');
-
-    const [copyrightControl, setCopyrightControl] = useState('Ֆուլ-արտ');
-    const [copyrightControlCompanyType, setCopyrightControlCompanyType] = useState('ՍՊԸ');
-    const [copyrightControlResponsiblePerson, setCopyrightControlResponsiblePerson] = useState('Տ․ Խաչիյան');
-    const [copyrightControlResponsiblePersonPosition, setCopyrightControlResponsiblePersonPosition] = useState('կոնստրուկտոր');
 
     const [constructionNormsStatus, setConstructionNormsStatus] = useState("գործող")
 
@@ -58,25 +70,25 @@ const DocumentTamplate = () => {
 
 
                     <div className="w-full flex flex-col gap-[16px] items-center justify-center">
-                        <h1 className="font-bold">Ակտ Nº {performativeNumber}/{page}</h1>
+                        <h1 className="font-bold">Ակտ Nº {documentInfo.performativeNumber}/{documentInfo.page}</h1>
                     </div>
                 </div>
 
                 <div className="container">
                     <p className="text-[10px] font-thin">Ծածկված միջանկյալ աշխատանքների ընդունման</p>
                     <div className="flex justify-center items-center font-bold">
-                        {`${day}/${month}/${year}`}
+                        {`${date.day}/${date.month}/${date.year}`}
                     </div>
                 </div>
 
                 <div className="container flex flex-col justify-center items-center">
-                    <p className="font-bold">{`${objectName}, ${objectAddress} - Շենք Nº ${buildingNumber} ՏԻՊ ${buildingType}`}</p>
+                    <p className="font-bold">{`${constructionInfo.objectName}, ${constructionInfo.objectAddress} - Շենք Nº ${constructionInfo.buildingNumber} ՏԻՊ ${constructionInfo.buildingType}`}</p>
                     <hr className=" w-full border-1 border-black"/>
                     <p className="text-[10px] font-thin">(օբյեկտի անվանումը և տեղը(հասցեն))</p>
                 </div>
 
                 <div className="container flex flex-col justify-center items-center">
-                    <p className="font-bold">{`${heightSign} նիշում ${natureOfWork}`}</p>
+                    <p className="font-bold">{`${constructionInfo.heightSign} նիշում ${natureOfWork}`}</p>
                     <hr className=" w-full border-1 border-black"/>
                     <p className="text-[10px] font-thin">(Ընդունվող աշխատանքի բնույթը)</p>
                 </div>
@@ -84,7 +96,7 @@ const DocumentTamplate = () => {
                 <div className="container flex gap-2">
                     <p className="text-[10px] font-thin flex justify-start items-center">Պատասխանատու՝</p>
                     <div className="w-full">
-                        <p className="font-bold flex justify-center">{`${responsiblePersonPosition}՝ ${responsiblePerson}`}</p>
+                        <p className="font-bold flex justify-center">{`${companies.generalContractor.responsiblePersonPosition}՝ ${companies.generalContractor.generalEngineer}`}</p>
                         <hr className="w-full border-1 border-black"/>
                         <p className="text-[10px] font-thin flex justify-center">(Ա․Ա․Հ)</p>
                     </div>
@@ -94,7 +106,7 @@ const DocumentTamplate = () => {
                     <p className="w-2/5 text-[10px] font-thin flex justify-start items-center">Պատասխանատուի տեխն․
                         հսկողության ինժեներ և ներկայացուցիչներ՝</p>
                     <div className="w-full">
-                        <p className="font-bold flex justify-center">{`«${technicalControlCompany}» ${technicalControlCompanyType} տեխ․ հսկ․՝ ${technicalControlEngineer}`}</p>
+                        <p className="font-bold flex justify-center">{`«${companies.technicalControlCompany.name}» ${companies.technicalControlCompany.type} տեխ․ հսկ․՝ ${companies.technicalControlCompany.technicalControlEngineer}`}</p>
                         <hr className="w-full border-1 border-black"/>
                     </div>
                 </div>
@@ -102,7 +114,7 @@ const DocumentTamplate = () => {
                 <div className="container flex gap-2">
                     <p className="w-2/5 text-[10px] font-thin flex justify-start items-center">Գլծավոր կապալառուի՝</p>
                     <div className="w-full">
-                        <p className="font-bold flex justify-center">{`«${generalContractor}» ${generalContractorCompanyType} ${responsiblePersonPosition}՝ ${responsiblePerson}`}</p>
+                        <p className="font-bold flex justify-center">{`«${companies.generalContractor.name}» ${companies.generalContractor.type} ${companies.generalContractor.responsiblePersonPosition}՝ ${companies.generalContractor.generalEngineer}`}</p>
                         <hr className="w-full border-1 border-black"/>
                         <p className="text-[10px] font-thin flex justify-center">(Ա․Ա․Հ պաշտոնը)</p>
                     </div>
@@ -111,7 +123,7 @@ const DocumentTamplate = () => {
                 <div className="container flex gap-2">
                     <p className="w-2/5 text-[10px] font-thin flex justify-start items-center">ենթակապալառուի՝</p>
                     <div className="w-full">
-                        <p className="font-bold flex justify-center">{`«${subContractor}» ${subContractorCompanyType} ${subContractorResponsiblePersonPosition}՝ ${subContractorResponsiblePerson}`}</p>
+                        <p className="font-bold flex justify-center">{`«${companies.subContractor.name}» ${companies.subContractor.type} ${companies.subContractor.subContractorResponsiblePersonPosition}՝ ${companies.subContractor.subContractorResponsiblePerson}`}</p>
                         <hr className="w-full border-1 border-black"/>
                         <p className="text-[10px] font-thin flex justify-center">(Ա․Ա․Հ պաշտոնը)</p>
                     </div>
@@ -120,7 +132,7 @@ const DocumentTamplate = () => {
                 <div className="container flex gap-2">
                     <p className="w-2/5 text-[10px] font-thin flex justify-start items-center">ենթակապալառուի՝</p>
                     <div className="w-full">
-                        <p className="font-bold flex justify-center">{`«${copyrightControl}» ${copyrightControlCompanyType} ${copyrightControlResponsiblePersonPosition}՝ ${copyrightControlResponsiblePerson}`}</p>
+                        <p className="font-bold flex justify-center">{`«${companies.copyrightControl.name}» ${companies.copyrightControl.type} ${companies.copyrightControl.responsiblePersonPosition}՝ ${companies.copyrightControl.copyrightControlResponsiblePerson}`}</p>
                         <hr className="w-full border-1 border-black"/>
                         <p className="text-[10px] font-thin flex justify-center">(Ա․Ա․Հ պաշտոնը)</p>
                     </div>
@@ -142,7 +154,7 @@ const DocumentTamplate = () => {
                 </div>
 
                 <div className="container w-full">
-                    <p className="font-bold flex justify-start">{`1. «${generalContractor}» ${generalContractorCompanyType} ${responsiblePersonPosition} ${responsiblePerson}`}</p>
+                    <p className="font-bold flex justify-start">{`1. «${companies.generalContractor.name}» ${companies.generalContractor.type} ${companies.generalContractor.responsiblePersonPosition} ${companies.generalContractor.generalEngineer}`}</p>
                     <hr className="w-full border-1 border-black"/>
                     <p className="text-[10px] font-thin flex justify-center">(լիցենզավորված կազզմակերպության անունը,
                         մասնագետի Ա․Ա․Հ)</p>
@@ -164,7 +176,7 @@ const DocumentTamplate = () => {
                     <p className="text-[10px] font-thin flex justify-center">2․2․Թույլատրել հետևյալ աշխատանքների
                         իրականացումը</p>
                     <div className="container w-full">
-                        <p className="font-bold flex justify-center">{`${heightSign} նիշում ${permittedToDo} `}</p>
+                        <p className="font-bold flex justify-center">{`${constructionInfo.heightSign} նիշում ${permittedToDo} `}</p>
                         <hr className="w-full border-1 border-black"/>
                         <div className="w-full mt-5">
                             <hr className="w-full border-1 border-black"/>
@@ -193,19 +205,19 @@ const DocumentTamplate = () => {
                     <div className="w-full font-bold flex justify-start items-end gap-10">
                         <p className="w-[180px]">Տեխնիկական հսկողություն՝</p>
                         <hr className="w-2/5 border-1 border-black"/>
-                        <p>{`${technicalControlEngineer}`}</p>
+                        <p>{`${companies.technicalControlCompany.technicalControlEngineer}`}</p>
                     </div>
 
                     <div className="w-full font-bold flex justify-start items-end gap-10">
                         <p className="w-[180px]">Հեղինակային հսկողություն՝</p>
                         <hr className="w-2/5 border-1 border-black"/>
-                        <p>{`${copyrightControlResponsiblePerson}`}</p>
+                        <p>{`${companies.copyrightControl.copyrightControlResponsiblePerson}`}</p>
                     </div>
 
                     <div className="w-full font-bold flex justify-start items-end gap-10">
-                        <p className="w-[180px]">Գլխավոր ինժեբեր՝</p>
+                        <p className="w-[180px]">Գլխավոր ինժեներ՝</p>
                         <hr className="w-2/5 border-1 border-black"/>
-                        <p>{`${responsiblePerson}`}</p>
+                        <p>{`${companies.generalContractor.generalEngineer}`}</p>
                     </div>
 
                 </div>
@@ -215,4 +227,4 @@ const DocumentTamplate = () => {
     );
 }
 
-export default DocumentTamplate;
+export default DocumentTemplate;

@@ -1,4 +1,4 @@
-import DocumentTemplate from "../components/DocumentTamplate";
+import DocumentTemplate from "../components/DocumentTemplate";
 
 export default function Home() {
   return (
