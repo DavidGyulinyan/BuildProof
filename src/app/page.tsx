@@ -1,8 +1,9 @@
 import Link from 'next/link';
+import DocumentTemplate from '../components/DocumentTemplate';
 
 export default function Home() {
   return (
-    <div className="min-h-[calc(100vh-128px)] bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center">
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
@@ -12,28 +13,7 @@ export default function Home() {
             Շինարարական փաստաթղթերի պրոֆեսիոնալ կառավարման համակարգ շինարարական ընդունման փաստաթղթերի ստեղծման և կառավարման համար
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-16">
-            {/* Document Template Card */}
-            <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-                Փաստաթղթի օրինակ
-              </h2>
-              <p className="text-gray-600 mb-6">
-                Դիտեք փաստաթղթի օրինակը՝ հասկանալու համար ինչպես պետք է լրացնել
-              </p>
-              <Link
-                href="/template"
-                className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors"
-              >
-                Դիտել օրինակը
-              </Link>
-            </div>
-
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-16">
             {/* View Document Card */}
             <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -74,6 +54,14 @@ export default function Home() {
               >
                 Խմբագրել փաստաթուղթը
               </Link>
+            </div>
+          </div>
+
+          {/* Document Template Section */}
+          <div className="mt-20">
+            <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Փաստաթղթի օրինակ</h3>
+            <div className="flex justify-center">
+              <DocumentTemplate />
             </div>
           </div>
 

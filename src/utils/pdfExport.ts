@@ -30,29 +30,8 @@ export const exportToPDF = async (elementId: string, filename: string = 'documen
             compress: true
         });
 
-        // Calculate dimensions maintaining aspect ratio
-        const canvasWidth = canvas.width;
-        const canvasHeight = canvas.height;
-        const canvasRatio = canvasWidth / canvasHeight;
-        const pdfRatio = pdfWidth / pdfHeight;
-        
-        let finalWidth, finalHeight;
-        
-        if (canvasRatio > pdfRatio) {
-            // Canvas is wider - fit to width
-            finalWidth = pdfWidth;
-            finalHeight = pdfWidth / canvasRatio;
-        } else {
-            // Canvas is taller - fit to height
-            finalHeight = pdfHeight;
-            finalWidth = pdfHeight * canvasRatio;
-        }
-        
-        // Center the image on the page
-        const xOffset = (pdfWidth - finalWidth) / 2;
-        const yOffset = (pdfHeight - finalHeight) / 2;
-        
-        pdf.addImage(imgData, 'PNG', xOffset, yOffset, finalWidth, finalHeight, undefined, 'FAST');
+        // Use full page dimensions to fit all content
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight, undefined, 'FAST');
         
         // Save the PDF
         pdf.save(filename);
@@ -82,29 +61,11 @@ export const exportAllPagesToPDF = async (pageCount: number, filename: string = 
 
             const imgData = canvas.toDataURL('image/png', 1.0);
             
-            const canvasWidth = canvas.width;
-            const canvasHeight = canvas.height;
-            const canvasRatio = canvasWidth / canvasHeight;
-            const pdfRatio = 210 / 297;
-            
-            let finalWidth, finalHeight;
-            
-            if (canvasRatio > pdfRatio) {
-                finalWidth = 210;
-                finalHeight = 210 / canvasRatio;
-            } else {
-                finalHeight = 297;
-                finalWidth = 297 * canvasRatio;
-            }
-            
-            const xOffset = (210 - finalWidth) / 2;
-            const yOffset = (297 - finalHeight) / 2;
-
             if (i > 0) {
                 pdf.addPage();
             }
-            
-            pdf.addImage(imgData, 'PNG', xOffset, yOffset, finalWidth, finalHeight, undefined, 'FAST');
+
+            pdf.addImage(imgData, 'PNG', 0, 0, 210, 297, undefined, 'FAST');
         } catch (error) {
             console.error(`Error generating PDF for page ${i + 1}:`, error);
         }

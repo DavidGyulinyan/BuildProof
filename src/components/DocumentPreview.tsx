@@ -11,7 +11,7 @@ export default function DocumentPreview({ pageIndex, previewId = "document-previ
     const { documentData, getCurrentPage } = useDocument();
     const currentPage = pageIndex !== undefined ? documentData.pages[pageIndex] : getCurrentPage();
     const { constructionInfo, companies, constructionNormsStatus } = documentData;
-    const { documentInfo, date, natureOfWork, materials, permittedToDo } = currentPage;
+    const { documentInfo, date, natureOfWork, materials, permittedToDo, permittedToDoHeightSign } = currentPage;
 
     return (
         <div id={previewId} className="w-[794px] min-h-[1123px] text-[13px] flex flex-col gap-2 border border-black p-7 bg-white">
@@ -47,7 +47,7 @@ export default function DocumentPreview({ pageIndex, previewId = "document-previ
             <div className="container flex gap-2">
                 <p className="text-[10px] font-thin flex justify-start items-center">Պատասխանատու՝</p>
                 <div className="w-full">
-                    <p className="font-bold flex justify-center">{`${companies.foreman.foremanPosition}՝ ${companies.foreman.name}`}</p>
+                    <p className="font-bold flex justify-center">{`${companies.foreman.name}`}</p>
                     <hr className="w-full border-1 border-black" />
                     <p className="text-[10px] font-thin flex justify-center">(Ա․Ա․Հ)</p>
                 </div>
@@ -126,7 +126,7 @@ export default function DocumentPreview({ pageIndex, previewId = "document-previ
                 <p className="text-[10px] font-thin flex justify-center">2․2․Թույլատրել հետևյալ աշխատանքների
                     իրականացումը</p>
                 <div className="container w-full">
-                    <p className="font-bold flex justify-center">{`${constructionInfo.heightSign} նիշում ${permittedToDo} `}</p>
+                    <p className="font-bold flex justify-center">{`${permittedToDoHeightSign || constructionInfo.heightSign} ${permittedToDo} `}</p>
                     <hr className="w-full border-1 border-black" />
                     <div className="w-full mt-5">
                         <hr className="w-full border-1 border-black" />
@@ -165,7 +165,7 @@ export default function DocumentPreview({ pageIndex, previewId = "document-previ
                 </div>
                 
                 <div className="w-full font-bold flex justify-start items-end gap-10">
-                    <p className="w-[180px]">{`${companies.foreman.foremanPosition}՝`}</p>
+                    <p className="w-[180px]">Աշղեկ՝</p>
                     <hr className="w-2/5 border-1 border-black" />
                     <p>{`${companies.foreman.name}`}</p>
                 </div>

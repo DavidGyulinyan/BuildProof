@@ -62,6 +62,7 @@ interface PageData {
   natureOfWork: string;
   materials: string;
   permittedToDo: string;
+  permittedToDoHeightSign: string;
 }
 
 interface DocumentData {
@@ -112,47 +113,48 @@ const getDefaultPageData = (
   natureOfWork: "",
   materials: "",
   permittedToDo: "",
+  permittedToDoHeightSign: "",
 });
 
 export const DocumentProvider = ({ children }: { children: ReactNode }) => {
   const [documentData, setDocumentData] = useState<DocumentData>({
     constructionInfo: {
-      objectName: "Բնակելի միկրոշրջան",
-      objectAddress: "ք․ Երևան, Աջափնյակ, Տիչինա 320",
-      buildingNumber: "55",
-      buildingType: "2-Հ",
-      heightSign: "-7.70",
+      objectName: "",
+      objectAddress: "",
+      buildingNumber: "",
+      buildingType: "",
+      heightSign: "",
     },
     companies: {
       technicalControlCompany: {
-        name: "Հալդի Քոնսալթ",
-        type: "ՍՊԸ",
-        technicalControlEngineer: "Ռ․ Եղիազարյան",
+        name: "",
+        type: "",
+        technicalControlEngineer: "",
       },
       generalContractor: {
-        name: "Շին Վեկտոր",
-        type: "ՍՊԸ",
-        generalEngineer: "Գ․ Դալլաքյան",
-        responsiblePersonPosition: "Գլխավոր ինժեներ",
+        name: "",
+        type: "",
+        generalEngineer: "",
+        responsiblePersonPosition: "",
       },
       subContractor: {
-        name: "-",
-        type: "-",
-        subContractorResponsiblePerson: "-",
-        subContractorResponsiblePersonPosition: "-",
+        name: "",
+        type: "",
+        subContractorResponsiblePerson: "",
+        subContractorResponsiblePersonPosition: "",
       },
       copyrightControl: {
-        name: "Ֆուլ-արտ",
-        type: "ՍՊԸ",
-        copyrightControlResponsiblePerson: "Տ․ Խաչիյան",
-        responsiblePersonPosition: "կոնստրուկտոր",
+        name: "",
+        type: "",
+        copyrightControlResponsiblePerson: "",
+        responsiblePersonPosition: "",
       },
       foreman: {
-        name: "Գ. Հարությունյան",
-        foremanPosition: "Աշղեկ",
+        name: "",
+        foremanPosition: "",
       },
     },
-    constructionNormsStatus: "գործող",
+    constructionNormsStatus: "",
     pages: [
       {
         documentInfo: {
@@ -160,14 +162,15 @@ export const DocumentProvider = ({ children }: { children: ReactNode }) => {
           performativeNumber: 1,
         },
         date: {
-          day: "15",
-          month: "06",
-          year: "2025",
+          day: "",
+          month: "",
+          year: "",
         },
         natureOfWork:
-          "ավտոկայանատեղիի հիմնային սալի և սյուների ամրանավորում և կաղապարում",
-        materials: "⌀8-Ac1, ⌀8, ⌀10, ⌀16, ⌀18, ⌀20, ⌀28, ⌀32 - A500c",
-        permittedToDo: "ավտոկայանատեղիի հիմնային սալի բետոնացում",
+          "",
+        materials: "",
+        permittedToDo: "",
+        permittedToDoHeightSign: "",
       },
     ],
     currentPageIndex: 0,
