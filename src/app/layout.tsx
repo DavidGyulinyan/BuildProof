@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BuildProof - Document Management",
+  title: "Build - Document Management",
   description: "Construction document management system",
 };
 
